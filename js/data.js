@@ -24,13 +24,18 @@ window.SITE = {
      id = the code after watch?v= in a YouTube link.
      group = "carnatic" | "dance" | "fusion"  (used to filter on Music page) */
   videos: [
-    { id:"sGiWZ5aq0fU", title:"Carnatic Vocal Recital",        group:"carnatic" },
-    { id:"hOEe03mr_5s", title:"Independent Carnatic Concert",  group:"carnatic" },
-    { id:"opPvCPI-raw", title:"Fusion Jugalbandi",             group:"fusion"   },
-    { id:"GobBH3Z_lPQ", title:"Live Jugalbandi Ensemble",      group:"fusion"   },
-    { id:"ExMxs9ClthU", title:"Vocal for Bharatanatyam",       group:"dance"    },
-    { id:"9qbXTrs0rfg", title:"Vocal for Dance Ballet",        group:"dance"    },
-    { id:"awS4Q_UPraI", title:"Dance Accompaniment",           group:"dance"    }
+    { id:"xEUA_AJr58M", title:"Carnatic Vocal, Raga Hamsadhwani",   group:"carnatic" },
+    { id:"YpI_792nNmY", title:"Live Performance",                   group:"carnatic" },
+    { id:"w3_kyZfiCSs", title:"Nataraj Kautukam",                   group:"dance" },
+    { id:"OfuR0auG-uk", title:"Varnam",                             group:"dance" },
+    { id:"oFDpEHxU0_E", title:"Swarajati",                          group:"dance" },
+    { id:"RdVMFwY0JpQ", title:"Bho Shambho, Ensemble",              group:"dance" },
+    { id:"gZcmnWoYTrU", title:"Kuchipudi, Swarajati in Vasanta",    group:"dance" },
+    { id:"IU4G01g1P8w", title:"Thillana in Dhanashree, Mohiniattam",group:"dance" },
+    { id:"1O6MPVjq5gw", title:"Bharatanatyam Recital",             group:"dance" },
+    { id:"pkSUWfRqPOE", title:"Classical Dance Recital",           group:"dance" },
+    { id:"opPvCPI-raw", title:"Fusion Jugalbandi",                 group:"fusion" },
+    { id:"GobBH3Z_lPQ", title:"Live Jugalbandi Ensemble",          group:"fusion" }
   ],
 
   /* ---- awards & honours. Newest first. ---- */
