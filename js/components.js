@@ -44,25 +44,52 @@
   var waSvg='<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C9.8 8.5 9.3 7 9 6.4c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>';
 
   var footer =
-  '<div class="wrap"><div class="footer-grid">'
-  + '<div><div class="brand" style="margin-bottom:14px"><span class="n" style="color:#fff;font-size:1.4rem">Sivaprasad NN</span>'
-  +   '<span class="t" style="color:var(--saffron)">Carnatic Vocalist &middot; Composer &middot; Music Director</span></div>'
-  +   '<p class="muted" style="max-width:34ch">Four decades of Carnatic vocal, Sopanam, dance-ballet and fusion, carried to the people who book, learn from and write about the music.</p>'
+  '<div class="wrap">'
+
+  /* top strip: brand + socials */
+  + '<div class="footer-top">'
+  +   '<div class="footer-brand">'
+  +     '<span class="footer-brand__name">Sivaprasad NN</span>'
+  +     '<span class="footer-brand__tag">Carnatic Vocalist &middot; Composer &middot; Music Director</span>'
+  +   '</div>'
   +   '<div class="socials">'+soc(C.instagram,'Instagram',ig)+soc(C.facebook,'Facebook',fb)+soc(C.youtube,'YouTube',yt)+soc(wa,'WhatsApp',waSvg)+'</div>'
   + '</div>'
-  + '<div><h4>Explore</h4><ul>'
-  +   '<li><a href="about.html">About</a></li><li><a href="repertoire.html">Repertoire</a></li>'
-  +   '<li><a href="performances.html">Performances</a></li><li><a href="music.html">Music &amp; Video</a></li>'
-  +   '<li><a href="learn.html">Learn Online</a></li><li><a href="book.html">Book Ensembles</a></li>'
-  +   '<li><a href="press.html">Press &amp; Recognition</a></li></ul></div>'
-  + '<div><h4>Get in touch</h4><ul>'
-  +   '<li><a href="tel:'+(C.phoneRaw||'')+'">'+(C.phone||'')+'</a></li>'
-  +   '<li><a href="mailto:'+(C.email||'')+'">'+(C.email||'')+'</a></li>'
-  +   '<li>'+(C.cityLine||'')+'</li>'
-  +   '<li style="margin-top:12px"><a href="contact.html" class="btn light" style="padding:10px 22px">Book / Enquire</a></li></ul></div>'
+
+  /* 4-column grid */
+  + '<div class="footer-grid">'
+  +   '<div class="footer-col">'
+  +     '<p class="footer-bio">Four decades of Carnatic vocal, Sopanam, dance-ballet and fusion music across India, the United States and Europe.</p>'
+  +   '</div>'
+  +   '<div class="footer-col">'
+  +     '<h4>Explore</h4><ul>'
+  +     '<li><a href="about.html">About</a></li>'
+  +     '<li><a href="repertoire.html">Repertoire</a></li>'
+  +     '<li><a href="performances.html">Performances</a></li>'
+  +     '<li><a href="music.html">Music &amp; Video</a></li></ul>'
+  +   '</div>'
+  +   '<div class="footer-col">'
+  +     '<h4>Services</h4><ul>'
+  +     '<li><a href="learn.html">Learn Online</a></li>'
+  +     '<li><a href="book.html">Book Ensembles</a></li>'
+  +     '<li><a href="press.html">Press &amp; Recognition</a></li>'
+  +     '<li><a href="contact.html">Contact</a></li></ul>'
+  +   '</div>'
+  +   '<div class="footer-col">'
+  +     '<h4>Get in Touch</h4>'
+  +     '<ul class="footer-contact">'
+  +       '<li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.7 12.7 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6.1 6.1l1.3-1.3a2 2 0 0 1 2.1-.5 12.7 12.7 0 0 0 2.8.7 2 2 0 0 1 1.7 2z"/></svg><a href="tel:'+(C.phoneRaw||'')+'">'+(C.phone||'')+'</a></li>'
+  +       '<li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:'+(C.email||'')+'">'+(C.email||'')+'</a></li>'
+  +       '<li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>'+(C.cityLine||'')+'</span></li>'
+  +     '</ul>'
+  +     '<a href="contact.html" class="footer-cta">Book / Enquire<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>'
+  +   '</div>'
   + '</div>'
-  + '<div class="footer-bottom"><span>&copy; '+new Date().getFullYear()+' Sivaprasad NN. All rights reserved.</span>'
-  +   '<span class="credit">A digital home by <a href="https://marketincrew.com" target="_blank" rel="noopener">MarketinCrew</a></span></div>'
+
+  /* bottom bar */
+  + '<div class="footer-bottom">'
+  +   '<span>&copy; '+new Date().getFullYear()+' Sivaprasad NN. All rights reserved.</span>'
+  +   '<span class="credit">A digital home by <a href="https://marketincrew.com" target="_blank" rel="noopener">MarketinCrew</a></span>'
+  + '</div>'
   + '</div>';
 
   var h=document.getElementById('site-header'); if(h){h.className='site-header';h.innerHTML=header;}
@@ -71,4 +98,19 @@
   // burger toggle
   var b=document.getElementById('burger'), nl=document.getElementById('navlinks');
   if(b&&nl){ b.addEventListener('click',function(){nl.classList.toggle('open');}); }
+
+  // transparent header on home page
+  if(page==='home' && h){
+    h.classList.add('header--transparent');
+    var scrollThreshold = 80;
+    function onHeaderScroll(){
+      if(window.scrollY > scrollThreshold){
+        h.classList.add('header--scrolled');
+      } else {
+        h.classList.remove('header--scrolled');
+      }
+    }
+    window.addEventListener('scroll', onHeaderScroll, {passive:true});
+    onHeaderScroll();
+  }
 })();

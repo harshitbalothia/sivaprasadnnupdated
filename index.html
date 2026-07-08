@@ -7,13 +7,14 @@
 <meta name="description" content="Sivaprasad NN is a Carnatic vocalist, composer and music director based in Mumbai. Four decades of Carnatic vocal, Sopanam, dance-ballet and fusion music across India, the US and Europe.">
 <meta property="og:title" content="Sivaprasad NN · Carnatic Vocalist">
 <meta property="og:description" content="Four decades of Carnatic vocal, Sopanam, dance-ballet and fusion music.">
-<meta property="og:image" content="assets/photos/hero/hero-home.jpg">
+<meta property="og:image" content="assets/Herobanner.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Inter:wght@300;400;500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Spectral:wght@400;500;600family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapdisplay=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
+<link rel="preload" as="image" href="assets/Herobanner.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Sivaprasad N. N.","jobTitle":"Carnatic Vocalist, Composer and Music Director","description":"Carnatic vocalist trained in the Guru-Shishya Parampara and the Sopanam style, lead vocalist for dance ballets and an independent concert and fusion artist.","address":{"@type":"PostalAddress","addressLocality":"Navi Mumbai","addressRegion":"Maharashtra","addressCountry":"IN"},"knowsAbout":["Carnatic Vocal Music","Sopanam","Bharatanatyam music","Mohiniattam music","Kuchipudi music","Kathakali music","Music Therapy"],"email":"sivaprasadnn@gmail.com"}
 </script>
@@ -21,110 +22,263 @@
 <body data-page="home">
 <div id="site-header"></div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="bg"><img src="assets/photos/hero/hero-home.jpg" alt="Sivaprasad NN with the tanpura"></div>
-  <div class="inner wrap">
-    <p class="kicker">Carnatic Vocalist &middot; Composer &middot; Music Director</p>
-    <h1 class="display">The voice behind<br>four decades of ragas.</h1>
-    <p class="lead">Carnatic vocal, Sopanam, dance ballet and fusion, carried from a debut at the age of nine to stages across India, the United States and Europe.</p>
-    <div class="btn-row">
-      <a href="music.html" class="btn light">Listen &amp; Watch</a>
-      <a href="contact.html" class="btn ghost" style="color:#fff;border-color:#fff">Book a Performance</a>
+<!-- HERO: full-screen banner with left-aligned content -->
+<section class="sgs-block sgs-block--intro">
+  <div class="sgs-media">
+    <img src="assets/Herobanner.png" alt="Sivaprasad NN performing with tanpura" class="sgs-media__image">
+    <div class="hero-content">
+      <p class="hero-content__subtitle">Carnatic Vocalist &middot; Composer &middot; Music Director</p>
+      <h1 class="hero-content__title"><span class="hero-line">The voice behind</span><span class="hero-line">four decades of ragas.</span></h1>
+      <p class="hero-content__desc">Carnatic vocal, Sopanam, dance ballet and fusion, carried from a debut at the age of nine to stages across India, the United States and Europe.</p>
+      <div class="hero-content__cta">
+        <a href="music.html" class="btn hero-btn hero-btn--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Listen &amp; Watch
+        </a>
+        <a href="contact.html" class="btn hero-btn hero-btn--secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book a Performance
+        </a>
+      </div>
     </div>
-  </div>
-</header>
-
-<!-- INTRO -->
-<section>
-  <div class="wrap narrow center reveal">
-    <p class="kicker">The artist</p>
-    <h2 class="display">A lifetime given to the sruti and the laya.</h2>
-    <div class="orn"><span>&#10086;</span></div>
-    <p class="lead">Born into a family of musicians and Kathakali artists in Kerala, trained in Carnatic vocal under the Guru-Shishya Parampara and in the Sopanam style under his father, Shri V. N. Narayanan Namboodiri. A voice trusted by legendary gurus, danseuses and orchestras, and by the students who carry the tradition forward.</p>
-    <a href="about.html" class="btn ghost" style="margin-top:.6rem">Read the full story</a>
   </div>
 </section>
 
+<!-- ABOUT: sticky grid scroll block -->
+<section class="sgs-block sgs-block--main">
+  <div class="sgs-wrapper">
+
+    <!-- Centered text content -->
+    <div class="sgs-content">
+      <h2 class="sgs-content__title">A lifetime given<br>to the sruti and the laya.</h2>
+      <p class="sgs-content__description">Born into a family of musicians and Kathakali artists in Kerala, trained under the Guru-Shishya Parampara. A voice trusted by legendary gurus, danseuses and orchestras.</p>
+      <a href="about.html" class="btn sgs-content__button about-cta">
+        Read the full story
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    <!-- 3-column image grid (12 images) -->
+    <div class="sgs-gallery">
+      <div class="sgs-gallery__grid">
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-bw.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-warm.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-green.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/hero/hero-orange.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/gallery/perf-01.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/gallery/perf-02.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-standing.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/hero/hero-bw-arms.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/gallery/perf-03.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-bw2.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/hero/hero-black-seated.jpg" alt="" class="sgs-gallery__image"></div>
+        <div class="sgs-gallery__item"><img src="assets/photos/portrait/portrait-red.jpg" alt="" class="sgs-gallery__image"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- THREE PILLARS -->
-<section class="section-sand">
+<section class="section-pillars">
   <div class="wrap">
-    <div class="center reveal" style="max-width:720px;margin:0 auto 48px">
+    <div class="center reveal" style="max-width:720px;margin:0 auto 56px">
       <p class="kicker">What the music offers</p>
       <h2 class="display">Perform. Teach. Enable.</h2>
       <p class="muted">Three ways the music reaches the world, all from one home online.</p>
     </div>
-    <div class="grid g3">
-      <div class="card pillar reveal">
-        <div class="ic">&#9834;</div>
-        <h3>Perform</h3>
-        <p class="muted">Solo Carnatic concerts, lead vocal for dance ballets, fusion and jugalbandi. Booked for festivals, arangetrams and stages across India and abroad.</p>
-        <a href="performances.html">See performances &rarr;</a>
+    <div class="spotlight-grid">
+
+      <div class="spotlight-card reveal" data-glow="warm">
+        <div class="spotlight-card__glow"></div>
+        <div class="spotlight-card__img">
+          <img src="assets/344786.jpg" alt="">
+        </div>
+        <div class="spotlight-card__body">
+          <div class="spotlight-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </div>
+          <h3 class="spotlight-card__title">Perform</h3>
+          <p class="spotlight-card__text">Solo Carnatic concerts, lead vocal for dance ballets, fusion and jugalbandi. Booked for festivals, arangetrams and stages across India and abroad.</p>
+          <a href="performances.html" class="spotlight-card__cta">
+            <span>See performances</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="card pillar reveal">
-        <div class="ic">&#128218;</div>
-        <h3>Teach</h3>
-        <p class="muted">Carnatic and light-music classes taught online, for students in India and around the world, at every level from beginner to professional.</p>
-        <a href="learn.html">Learn online &rarr;</a>
+
+      <div class="spotlight-card reveal" data-glow="warm">
+        <div class="spotlight-card__glow"></div>
+        <div class="spotlight-card__img">
+          <img src="assets/9888.jpg" alt="">
+        </div>
+        <div class="spotlight-card__body">
+          <div class="spotlight-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10l-10-5L2 10l10 5 10-5z"/>
+              <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/>
+              <line x1="22" y1="10" x2="22" y2="16"/>
+            </svg>
+          </div>
+          <h3 class="spotlight-card__title">Teach</h3>
+          <p class="spotlight-card__text">Carnatic and light-music classes taught online, for students in India and around the world, at every level from beginner to professional.</p>
+          <a href="learn.html" class="spotlight-card__cta">
+            <span>Learn online</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="card pillar reveal">
-        <div class="ic">&#127925;</div>
-        <h3>Enable</h3>
-        <p class="muted">A network of vocalists, flautists, violinists and full orchestras, packaged and booked as concerts and ensembles across India and North America.</p>
-        <a href="book.html">Book an ensemble &rarr;</a>
+
+      <div class="spotlight-card reveal" data-glow="warm">
+        <div class="spotlight-card__glow"></div>
+        <div class="spotlight-card__img">
+          <img src="assets/photos/gallery/perf-24.jpg" alt="">
+        </div>
+        <div class="spotlight-card__body">
+          <div class="spotlight-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 17l-1.5 1.5a2.12 2.12 0 0 1-3 0 2.12 2.12 0 0 1 0-3L11 11"/>
+              <path d="M13 7l1.5-1.5a2.12 2.12 0 0 1 3 0 2.12 2.12 0 0 1 0 3L13 13"/>
+              <path d="M2 7l3.5 3.5"/>
+              <path d="M18.5 13.5L22 17"/>
+              <path d="M2 17l4-4"/>
+              <path d="M18 7l4 4"/>
+            </svg>
+          </div>
+          <h3 class="spotlight-card__title">Enable</h3>
+          <p class="spotlight-card__text">A network of vocalists, flautists, violinists and full orchestras, packaged and booked as concerts and ensembles across India and North America.</p>
+          <a href="book.html" class="spotlight-card__cta">
+            <span>Book an ensemble</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- FEATURED VIDEO -->
-<section class="section-ink">
+<section class="section-videos">
   <div class="wrap">
-    <div class="split">
-      <div class="txt reveal">
-        <p class="kicker">In performance</p>
-        <h2 class="display">Hear the voice.</h2>
-        <p class="muted">A few moments from concerts, ballets and jugalbandis. The fastest way to understand forty years on stage is to listen.</p>
-        <a href="music.html" class="btn light" style="margin-top:.6rem">Open the full library</a>
+    <div class="center reveal" style="max-width:640px;margin:0 auto 0">
+      <p class="kicker">In performance</p>
+      <h2 class="display">Hear the voice.</h2>
+      <p class="muted">A few moments from concerts, ballets and jugalbandis. The fastest way to understand forty years on stage is to listen.</p>
+      <div style="margin-top:28px">
+        <a href="music.html" class="vid-cta">
+          <span class="vid-cta__label">Open the full library</span>
+          <span class="vid-cta__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="vid-pair" style="margin-top:48px">
+      <div class="reveal">
+        <div class="video video-thumb vid-card" data-yt="xEUA_AJr58M">
+          <img src="assets/thumbnail1.png" alt="Carnatic Vocal, Raga Hamsadhwani">
+        </div>
+        <div class="vcaption">Carnatic Vocal, Raga Hamsadhwani</div>
       </div>
       <div class="reveal">
-        <div data-videos data-group="carnatic" class="grid" style="grid-template-columns:1fr;gap:0"></div>
+        <div class="video video-thumb vid-card" data-yt="YpI_792nNmY">
+          <img src="assets/thumbnail2.png" alt="Live Performance">
+        </div>
+        <div class="vcaption">Live Performance</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALLERY TEASER -->
-<section>
+<!-- GALLERY: sticky scroll photo grid -->
+<section id="presence" class="section-hgallery section-sticky-grid">
   <div class="wrap">
-    <div class="center reveal" style="max-width:720px;margin:0 auto 40px">
+    <div class="center reveal" style="max-width:640px;margin:0 auto 0">
       <p class="kicker">Presence</p>
       <h2 class="display">On stage, in his element.</h2>
+      <div style="margin-top:28px">
+        <a href="performances.html" class="vid-cta">
+          <span class="vid-cta__label">View all performances</span>
+          <span class="vid-cta__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
     </div>
-    <div class="gallery" data-gallery data-limit="9"></div>
-    <div class="center"><a href="performances.html" class="btn ghost">View all performances</a></div>
+  </div>
+
+  <div class="sticky-grid" style="margin-top:48px">
+    <div class="sticky-grid__col sticky-grid__col--scroll">
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-01.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-05.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-08.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-12.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-15.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+    </div>
+    <div class="sticky-grid__col sticky-grid__col--sticky">
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-03.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-07.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-10.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+    </div>
+    <div class="sticky-grid__col sticky-grid__col--scroll">
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-18.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-20.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-02.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-04.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-06.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+    </div>
   </div>
 </section>
 
-<!-- PRESS -->
-<section class="section-sand">
+<!-- PRESS / TESTIMONIALS -->
+<section class="section-testimonials">
   <div class="wrap">
-    <div class="center reveal" style="max-width:720px;margin:0 auto 40px">
+    <div class="center reveal" style="max-width:720px;margin:0 auto 52px">
       <p class="kicker">In the press</p>
-      <h2 class="display">Written about, for decades.</h2>
+      <h2 class="display testimonials-title">Written about, for decades.</h2>
+      <p class="muted">What critics, journalists and fellow artists have said about the music.</p>
+      <div style="margin-top:24px">
+        <a href="press.html" class="vid-cta">
+          <span class="vid-cta__label">Press &amp; recognition</span>
+          <span class="vid-cta__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
     </div>
-    <div class="grid g3" data-quotes></div>
-    <div class="center" style="margin-top:36px"><a href="press.html" class="btn ghost">Press &amp; recognition</a></div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee-track" data-quotes-marquee></div>
+    <div class="marquee-fade marquee-fade--left"></div>
+    <div class="marquee-fade marquee-fade--right"></div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section-ink center">
-  <div class="wrap narrow reveal">
-    <h2 class="display">Bring the music to your stage, your students, your city.</h2>
-    <p class="muted">Book a concert, enrol in classes, or commission an ensemble. One message starts the conversation.</p>
-    <div class="btn-row" style="justify-content:center">
-      <a href="contact.html" class="btn light">Book / Enquire</a>
+<!-- CTA: full-width banner with press collage background -->
+<section class="section-cta">
+  <div class="cta-bg">
+    <img src="assets/ctabanner.png" alt="" loading="lazy">
+  </div>
+  <div class="cta-inner">
+    <div class="cta-content">
+      <span class="cta-kicker cta-anim">Start here</span>
+      <h2 class="cta-title cta-anim">Bring the music to your stage, your students, your city.</h2>
+      <p class="cta-desc cta-anim">Book a concert, enrol in classes, or commission an ensemble. One message starts the conversation.</p>
+      <div class="cta-actions cta-anim">
+        <a href="contact.html" class="cta-btn">
+          <span class="cta-btn__label">Book / Enquire</span>
+          <span class="cta-btn__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -133,5 +287,13 @@
 <script src="js/data.js"></script>
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
+<!-- Sticky grid scroll dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/sticky-grid.js" defer></script>
 </body>
 </html>

@@ -60,11 +60,32 @@
     return '<li><span class="yr">'+a.yr+'</span><span class="ti">'+a.ti+'</span></li>';
   }).join(''); }
 
-  /* ---------- render quotes (data-quotes) ---------- */
+  /* ---------- render quotes (data-quotes grid, legacy) ---------- */
   var qEl=document.querySelector('[data-quotes]');
   if(qEl){ qEl.innerHTML=(S.quotes||[]).map(function(c){
     return '<div class="quote reveal"><p>&ldquo;'+c.q+'&rdquo;</p><cite>'+c.by+'</cite></div>';
   }).join(''); qEl.querySelectorAll('.reveal').forEach(reveal); }
+
+  /* ---------- render quotes marquee ---------- */
+  var mqEl=document.querySelector('[data-quotes-marquee]');
+  if(mqEl){
+    var quotes=S.quotes||[];
+    function buildCard(c){
+      var initials=c.by.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
+      return '<div class="tcard">'
+        +'<div class="tcard__head">'
+        +'<span class="tcard__avatar">'+initials+'</span>'
+        +'<span class="tcard__source">'+c.by+'</span>'
+        +'</div>'
+        +'<p class="tcard__text">&ldquo;'+c.q+'&rdquo;</p>'
+        +'</div>';
+    }
+    var set='';
+    for(var r=0;r<4;r++){
+      quotes.forEach(function(c){ set+=buildCard(c); });
+    }
+    mqEl.innerHTML=set;
+  }
 
   /* ---------- lightbox ---------- */
   var imgs=[], idx=0;
@@ -93,6 +114,50 @@
     idx=imgs.indexOf(fig.getAttribute('data-lb'));
     show(); document.getElementById('lb').classList.add('open');
   });
+
+  /* ---------- spotlight card glow tracking ---------- */
+  document.querySelectorAll('.spotlight-card').forEach(function(card){
+    card.addEventListener('pointermove',function(e){
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      card.style.setProperty('--glow-x', x + 'px');
+      card.style.setProperty('--glow-y', y + 'px');
+    });
+  });
+
+  /* ---------- CTA banner: staggered scroll reveal ---------- */
+  var ctaAnims = document.querySelectorAll('.cta-anim');
+  if(ctaAnims.length){
+    var ctaObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var items = document.querySelectorAll('.cta-anim');
+        var delay = 0;
+        items.forEach(function(item){
+          if(!item.classList.contains('in')){
+            setTimeout(function(){ item.classList.add('in'); }, delay);
+            delay += 150;
+          }
+        });
+        ctaObs.unobserve(entry.target);
+      });
+    },{threshold:.2});
+    ctaObs.observe(ctaAnims[0]);
+  }
+
+  /* ---------- CTA banner: parallax on background image ---------- */
+  var ctaBg = document.querySelector('.cta-bg img');
+  if(ctaBg){
+    var ctaSec = document.querySelector('.section-cta');
+    window.addEventListener('scroll',function(){
+      var rect = ctaSec.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if(rect.bottom < 0 || rect.top > vh) return;
+      var progress = (vh - rect.top) / (vh + rect.height);
+      ctaBg.style.transform = 'scale(1.08) translateY(' + ((progress - 0.5) * 30) + 'px)';
+    },{passive:true});
+  }
 
   /* ---------- contact form tabs ---------- */
   document.querySelectorAll('.tabs').forEach(function(tabs){
