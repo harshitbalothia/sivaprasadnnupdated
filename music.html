@@ -8,57 +8,54 @@
 <meta property="og:image" content="assets/photos/hero/hero-music.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Inter:wght@300;400;500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Spectral:wght@400;500;600family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapdisplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="music">
 <div id="site-header"></div>
 
-<header class="pagehead">
+<header class="pagehead music-hero">
   <div class="bg"><img src="assets/photos/hero/hero-music.jpg" alt="Sivaprasad NN singing"></div>
   <div class="inner wrap">
     <p class="kicker">Listen &amp; watch</p>
-    <h1 class="display">Music &amp; video.</h1>
+    <h1 class="display">The voice, in performance.</h1>
+    <p class="music-hero__intro">Concerts, dance and musical collaborations, gathered in one listening room.</p>
   </div>
+  <a class="music-hero__scroll" href="#music-library">Explore the archive <span aria-hidden="true">↓</span></a>
 </header>
 
-<section>
+<section class="music-library-section" id="music-library">
   <div class="wrap">
-    <div class="reveal" style="max-width:720px;margin:0 auto 44px" >
-      <p class="kicker center">Carnatic vocal</p>
-      <h2 class="display center">Solo recitals.</h2>
+    <div class="music-library__head reveal">
+      <div>
+        <p class="kicker">Watch and listen</p>
+        <h2 class="display">A library of music.</h2>
+      </div>
+      <p>Move between Carnatic vocal, dance repertoire and fusion collaborations, or browse the complete collection.</p>
     </div>
-    <div class="grid g2" data-videos data-group="carnatic"></div>
+    <div class="music-tabs reveal" data-music-tabs role="tablist" aria-label="Video categories">
+      <button class="music-tab active" type="button" role="tab" aria-selected="true" data-music-filter="all">All videos</button>
+      <button class="music-tab" type="button" role="tab" aria-selected="false" data-music-filter="carnatic">Carnatic</button>
+      <button class="music-tab" type="button" role="tab" aria-selected="false" data-music-filter="dance">Dance</button>
+      <button class="music-tab" type="button" role="tab" aria-selected="false" data-music-filter="fusion">Fusion</button>
+    </div>
+    <div class="music-library" data-music-library></div>
   </div>
 </section>
 
-<section class="section-sand">
+<section class="music-closing">
   <div class="wrap">
-    <div class="reveal" style="max-width:720px;margin:0 auto 44px">
-      <p class="kicker center">Dance</p>
-      <h2 class="display center">Vocal for dance ballets.</h2>
-      <p class="muted center">Lead vocal for Bharatanatyam, Mohiniattam, Kuchipudi and Kathakali.</p>
+    <div class="music-closing__panel reveal">
+      <img src="assets/GAllery /photo-20.jpg" alt="Sivaprasad NN performing with dancers and musicians">
+      <div class="music-closing__overlay"></div>
+      <div class="music-closing__content">
+        <p class="kicker">Bring the music closer</p>
+        <h2 class="display">A voice for the whole performance.</h2>
+        <p>For concerts, dance productions and musical collaborations, share the idea and begin a conversation.</p>
+        <a href="contact.html?intent=perform" class="btn light">Enquire to book</a>
+      </div>
     </div>
-    <div class="grid g3" data-videos data-group="dance"></div>
-  </div>
-</section>
-
-<section class="section-ink">
-  <div class="wrap">
-    <div class="reveal" style="max-width:720px;margin:0 auto 44px">
-      <p class="kicker center">Fusion</p>
-      <h2 class="display center">Live jugalbandi.</h2>
-    </div>
-    <div class="grid g2" data-videos data-group="fusion"></div>
-  </div>
-</section>
-
-<section class="center">
-  <div class="wrap narrow reveal">
-    <div class="orn"><span>&#9834;</span></div>
-    <h2 class="display">Want the voice at your event?</h2>
-    <div class="btn-row" style="justify-content:center"><a href="contact.html" class="btn">Book a performance</a></div>
   </div>
 </section>
 

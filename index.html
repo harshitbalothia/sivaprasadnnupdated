@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Inter:wght@300;400;500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Spectral:wght@400;500;600family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapdisplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="preload" as="image" href="assets/Herobanner.png">
@@ -180,19 +180,37 @@
         </a>
       </div>
     </div>
-    <div class="vid-pair" style="margin-top:48px">
-      <div class="reveal">
-        <div class="video video-thumb vid-card" data-yt="xEUA_AJr58M">
-          <img src="assets/thumbnail1.png" alt="Carnatic Vocal, Raga Hamsadhwani">
+    <div class="video-carousel reveal" data-video-carousel aria-label="Performance videos" style="margin-top:48px">
+      <button class="video-carousel__arrow video-carousel__arrow--prev" type="button" aria-label="Previous video">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <div class="video-carousel__viewport">
+        <div class="video-carousel__track">
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Gajavad.mp4" controls preload="metadata"></video><p class="vcaption">Gajavadana</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Hamsadwani.mp4" controls preload="metadata"></video><p class="vcaption">Hamsadhwani</p></article>
+          <article class="video-carousel__slide"><div class="video video-thumb vid-card" data-yt="YpI_792nNmY"><img loading="lazy" src="https://i.ytimg.com/vi/YpI_792nNmY/hqdefault.jpg" alt="Live Carnatic vocal performance"></div><p class="vcaption">Live Carnatic vocal performance</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Navaratri Nerul3 himagiri .mp4" controls preload="metadata"></video><p class="vcaption">Himagiri, Navaratri</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Pibare rama.mp4" controls preload="metadata"></video><p class="vcaption">Pibare Rama</p></article>
+          <article class="video-carousel__slide"><div class="video video-thumb vid-card" data-yt="OfuR0auG-uk"><img loading="lazy" src="https://i.ytimg.com/vi/OfuR0auG-uk/hqdefault.jpg" alt="Varnam dance performance"></div><p class="vcaption">Varnam</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Pibare.mp4" controls preload="metadata"></video><p class="vcaption">Pibare</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Ragam saraswati.mp4" controls preload="metadata"></video><p class="vcaption">Ragam Saraswati</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Ragsm.mp4" controls preload="metadata"></video><p class="vcaption">Ragam</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Saraswati ragam.mp4" controls preload="metadata"></video><p class="vcaption">Saraswati Ragam</p></article>
+          <article class="video-carousel__slide"><div class="video video-thumb vid-card" data-yt="oFDpEHxU0_E"><img loading="lazy" src="https://i.ytimg.com/vi/oFDpEHxU0_E/hqdefault.jpg" alt="Swarajati dance performance"></div><p class="vcaption">Swarajati</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Saraswati.mp4" controls preload="metadata"></video><p class="vcaption">Saraswati</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Saraswatiaa.mp4" controls preload="metadata"></video><p class="vcaption">Saraswati, live</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Shuklambara.mp4" controls preload="metadata"></video><p class="vcaption">Shuklambara</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Slokam rama.mp4" controls preload="metadata"></video><p class="vcaption">Rama Slokam</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Sreechakra.mp4" controls preload="metadata"></video><p class="vcaption">Sreechakra</p></article>
+          <article class="video-carousel__slide"><div class="video video-thumb vid-card" data-yt="gZcmnWoYTrU"><img loading="lazy" src="https://i.ytimg.com/vi/gZcmnWoYTrU/hqdefault.jpg" alt="Kuchipudi Swarajati in Vasanta"></div><p class="vcaption">Kuchipudi, Swarajati in Vasanta</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Swara gajavadana.mp4" controls preload="metadata"></video><p class="vcaption">Swara Gajavadana</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/Test.mp4" controls preload="metadata"></video><p class="vcaption">Live performance</p></article>
+          <article class="video-carousel__slide"><video class="video vid-card" src="assets/videos/WhatsApp Video 2026-07-09 at 7.38.44 PM.mp4" controls preload="metadata"></video><p class="vcaption">Concert moment</p></article>
         </div>
-        <div class="vcaption">Carnatic Vocal, Raga Hamsadhwani</div>
       </div>
-      <div class="reveal">
-        <div class="video video-thumb vid-card" data-yt="YpI_792nNmY">
-          <img src="assets/thumbnail2.png" alt="Live Performance">
-        </div>
-        <div class="vcaption">Live Performance</div>
-      </div>
+      <button class="video-carousel__arrow video-carousel__arrow--next" type="button" aria-label="Next video">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -216,23 +234,23 @@
 
   <div class="sticky-grid" style="margin-top:48px">
     <div class="sticky-grid__col sticky-grid__col--scroll">
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-01.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-05.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-08.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-12.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-15.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-20.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /sivaprasadnn-bio-03.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-38.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-72.jpeg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-55.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
     </div>
     <div class="sticky-grid__col sticky-grid__col--sticky">
-      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-03.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-07.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/photos/gallery/perf-10.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/GAllery /photo-02.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/GAllery /photo-28.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item sticky-grid__item--fill"><img src="assets/GAllery /sivaprasadnn-bio-22.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
     </div>
     <div class="sticky-grid__col sticky-grid__col--scroll">
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-18.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-20.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-02.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-04.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
-      <figure class="sticky-grid__item"><img src="assets/photos/gallery/perf-06.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-26.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /sivaprasadnn-bio-05.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-54.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /sivaprasadnn-bio-24.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
+      <figure class="sticky-grid__item"><img src="assets/GAllery /photo-71.jpg" alt="Sivaprasad NN in performance" loading="lazy"></figure>
     </div>
   </div>
 </section>

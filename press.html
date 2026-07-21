@@ -5,68 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Press &amp; Recognition · Sivaprasad NN</title>
 <meta name="description" content="Press coverage, awards and honours for Sivaprasad NN, and the legendary gurus and artistes he has shared the stage with.">
-<meta property="og:image" content="assets/photos/portrait/portrait-bw2.jpg">
+<meta property="og:image" content="assets/photos/portrait/portrait-bw.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Inter:wght@300;400;500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Spectral:wght@400;500;600family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapdisplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="press">
 <div id="site-header"></div>
 
-<header class="pagehead">
-  <div class="bg"><img src="assets/photos/portrait/portrait-bw2.jpg" alt="Sivaprasad NN"></div>
+<header class="pagehead press-hero">
+  <div class="bg"><img src="assets/photos/portrait/portrait-bw.jpg" alt="Black and white portrait of Sivaprasad NN"></div>
   <div class="inner wrap">
     <p class="kicker">Press &amp; recognition</p>
     <h1 class="display">The proof, in other voices.</h1>
+    <p class="press-hero__intro">Reviews, honours and archival clippings that trace how the work has been received.</p>
   </div>
+  <a class="press-hero__scroll" href="#press-voices">Read the archive <span>↓</span></a>
 </header>
 
-<!-- QUOTES -->
-<section>
-  <div class="wrap">
-    <div class="center reveal" style="max-width:720px;margin:0 auto 44px">
-      <p class="kicker">In the press</p>
-      <h2 class="display">What critics have written.</h2>
+<section class="press-voices" id="press-voices">
+  <div class="wrap press-voices__layout">
+    <div class="press-voices__heading reveal"><p class="kicker">In the press</p><h2 class="display">What critics heard in the voice.</h2><p>Selected observations from published coverage, presented one voice at a time.</p></div>
+    <div class="press-quote-reader reveal" data-press-quotes>
+      <div class="press-quote-reader__mark">“</div>
+      <div class="press-quote-reader__stage" data-press-quote-stage></div>
+      <div class="press-quote-reader__controls"><span data-press-quote-count>01 / 05</span><div><button type="button" data-press-quote-prev aria-label="Previous quote">←</button><button type="button" data-press-quote-next aria-label="Next quote">→</button></div></div>
     </div>
-    <div class="grid g2" data-quotes></div>
+    <div class="press-quote-sources reveal" data-press-quote-sources aria-label="Choose a press source"></div>
   </div>
 </section>
 
-<!-- AWARDS -->
-<section class="section-sand">
+<section class="press-honours">
   <div class="wrap">
-    <div class="split">
-      <div class="txt reveal">
-        <p class="kicker">Awards &amp; honours</p>
-        <h2 class="display">Recognised across a lifetime.</h2>
-        <p class="muted">Titles and honours from festivals, temples and academies across India and abroad, awarded over three decades of vocal service.</p>
-      </div>
-      <div class="reveal">
-        <ul class="awards" data-awards></ul>
-      </div>
-    </div>
+    <div class="press-honours__head reveal"><div><p class="kicker">Awards &amp; honours</p><h2 class="display">Recognition from the community.</h2></div><p>Titles and honours from festivals, temples and academies, received through a sustained life in music.</p></div>
+    <div class="press-honours__list reveal" data-press-honours></div>
   </div>
 </section>
 
-<!-- CLIPPING WALL -->
-<section>
-  <div class="wrap">
-    <div class="center reveal" style="max-width:720px;margin:0 auto 44px">
-      <p class="kicker">Coverage</p>
-      <h2 class="display">In the papers, across the years.</h2>
-      <p class="muted">A wall of media coverage and event features. Tap any clipping to read it larger.</p>
-    </div>
-    <div class="press-grid" data-press></div>
+<section class="press-feature">
+  <div class="wrap press-feature__grid">
+    <div class="press-feature__image reveal"><img src="assets/GAllery /photo-55.jpg" alt="Sivaprasad NN receiving recognition at an event"></div>
+    <div class="press-feature__content reveal"><p class="kicker">Beyond the citation</p><h2 class="display">Recognition follows the work.</h2><p>The archive is not only a record of praise. It holds the performances, collaborations and long relationships that gave each clipping its context.</p><a href="about.html" class="press-text-link">Read his story <span>→</span></a></div>
   </div>
 </section>
 
-<section class="section-ink center">
-  <div class="wrap narrow reveal">
-    <h2 class="display">Writing about him, or booking him?</h2>
-    <p class="muted">For press, interviews or performance enquiries, reach out any time.</p>
-    <div class="btn-row" style="justify-content:center"><a href="contact.html" class="btn light">Get in touch</a></div>
+<section class="press-archive">
+  <div class="wrap">
+    <div class="press-archive__head reveal">
+      <div><p class="kicker">Coverage archive</p><h2 class="display">Original clippings and features.</h2></div>
+      <p>Select any clipping to read it in full, or move through the archive in smaller collections.</p>
+    </div>
+    <div class="press-filterbar reveal" data-press-filters>
+      <button type="button" class="active" data-press-filter="all">All clippings</button>
+      <button type="button" data-press-filter="1">Collection I</button>
+      <button type="button" data-press-filter="2">Collection II</button>
+      <button type="button" data-press-filter="3">Collection III</button>
+      <span data-press-result-count>18 items</span>
+    </div>
+    <div class="press-grid press-archive__grid" data-press></div>
+  </div>
+</section>
+
+<section class="press-closing">
+  <div class="wrap">
+    <div class="press-closing__panel reveal"><img src="assets/photos/portrait/portrait-red.jpg" alt="Sivaprasad NN singing"><div class="press-closing__overlay"></div><div class="press-closing__content"><p class="kicker">Press and enquiries</p><h2 class="display">Writing about the work?</h2><p>For interviews, press information or performance enquiries, begin with a direct conversation.</p><div class="press-closing__actions"><a href="contact.html" class="btn light">Get in touch</a><a href="performances.html">View performances <span>→</span></a></div></div></div>
   </div>
 </section>
 

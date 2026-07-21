@@ -25,7 +25,8 @@
   }).join('');
 
   var header =
-  '<div class="wrap"><nav class="nav">'
+  '<a class="skip-link" href="#main-content">Skip to main content</a>'
+  + '<div class="wrap"><nav class="nav" aria-label="Primary navigation">'
   + '<a class="brand" href="index.html">'
   +   '<span class="n">Sivaprasad NN</span>'
   +   '<span class="t">Carnatic Vocalist</span>'
@@ -33,7 +34,7 @@
   + '<ul class="nav-links" id="navlinks">' + links
   +   '<li class="nav-cta"><a href="contact.html" class="btn ghost" style="padding:10px 22px">Book / Enquire</a></li>'
   + '</ul>'
-  + '<button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>'
+  + '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>'
   + '</nav></div>';
 
   var wa = C.phoneRaw ? 'https://wa.me/'+C.phoneRaw : '#';
@@ -58,7 +59,7 @@
   /* 4-column grid */
   + '<div class="footer-grid">'
   +   '<div class="footer-col">'
-  +     '<p class="footer-bio">Four decades of Carnatic vocal, Sopanam, dance-ballet and fusion music across India, the United States and Europe.</p>'
+  +     '<p class="footer-bio">Four decades of Carnatic vocal, Sopanam, dance ballet and fusion music across concert, dance and collaborative settings.</p>'
   +   '</div>'
   +   '<div class="footer-col">'
   +     '<h4>Explore</h4><ul>'
@@ -94,13 +95,29 @@
 
   var h=document.getElementById('site-header'); if(h){h.className='site-header';h.innerHTML=header;}
   var f=document.getElementById('site-footer'); if(f){f.className='site-footer';f.innerHTML=footer;}
+  var main=document.querySelector('main') || document.querySelector('header:not(.site-header)') || document.querySelector('section');
+  if(main && !main.id) main.id='main-content';
 
-  // burger toggle
+  // burger toggle (mobile only, burger is display:none above 940px)
   var b=document.getElementById('burger'), nl=document.getElementById('navlinks');
-  if(b&&nl){ b.addEventListener('click',function(){nl.classList.toggle('open');}); }
+  if(b&&nl){
+    function isMobile(){return window.getComputedStyle(b).display!=='none';}
+    function closeMenu(){nl.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Open menu');b.classList.remove('is-open');}
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var opening=!nl.classList.contains('open');
+      nl.classList.toggle('open');
+      b.setAttribute('aria-expanded',String(opening));
+      b.setAttribute('aria-label',opening?'Close menu':'Open menu');
+      b.classList.toggle('is-open',opening);
+    });
+    nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(isMobile())closeMenu();});});
+    document.addEventListener('click',function(e){if(isMobile()&&nl.classList.contains('open')&&!nl.contains(e.target)&&!b.contains(e.target))closeMenu();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isMobile()&&nl.classList.contains('open'))closeMenu();});
+  }
 
-  // transparent header on home page
-  if(page==='home' && h){
+  // transparent header over full-bleed hero pages
+  if((page==='home' || page==='about' || page==='performances' || page==='music' || page==='learn' || page==='book' || page==='press' || page==='repertoire' || page==='contact') && h){
     h.classList.add('header--transparent');
     var scrollThreshold = 80;
     function onHeaderScroll(){

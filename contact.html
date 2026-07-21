@@ -8,31 +8,36 @@
 <meta property="og:image" content="assets/photos/portrait/portrait-green.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Inter:wght@300;400;500;600;700family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapfamily=Spectral:wght@400;500;600family=Cormorant+Garamond:wght@500;600;700&family=Marcellus&family=Spectral:wght@400;500;600&display=swapdisplay=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="contact">
 <div id="site-header"></div>
 
-<header class="pagehead" style="min-height:40vh">
-  <div class="bg"><img src="assets/photos/hero/hero-orange.jpg" alt="Sivaprasad NN"></div>
-  <div class="inner wrap">
-    <p class="kicker">Get in touch</p>
-    <h1 class="display">Start the conversation.</h1>
+<main>
+<header class="contact-hero">
+  <div class="contact-hero__image"><img src="assets/photos/hero/hero-orange.jpg" alt="Sivaprasad NN singing on stage"></div>
+  <div class="wrap contact-hero__inner">
+    <p class="kicker">Begin here</p>
+    <h1 class="display">Let us make<br>music together.</h1>
+    <p>Performances, teaching, Music Therapy workshops and thoughtfully assembled ensembles begin with a simple conversation.</p>
+    <a class="contact-hero__link" href="#enquiry">Choose your enquiry <span aria-hidden="true">↓</span></a>
   </div>
 </header>
 
-<section>
-  <div class="wrap split" style="align-items:start">
-    <!-- FORM -->
-    <div class="form reveal">
-      <p class="kicker">What can we help with?</p>
-      <div class="tabs">
-        <button class="tab active" data-tab="perform">Book a performance</button>
-        <button class="tab" data-tab="classes">Online classes</button>
-        <button class="tab" data-tab="workshop">Music Therapy</button>
-        <button class="tab" data-tab="ensemble">Ensemble</button>
+<section class="contact-workspace" id="enquiry">
+  <div class="wrap contact-workspace__grid">
+    <div class="contact-form reveal">
+      <div class="contact-form__heading">
+        <span>01</span>
+        <div><p class="kicker">Your enquiry</p><h2 class="display">How can we help?</h2></div>
+      </div>
+      <div class="tabs contact-tabs" role="tablist" aria-label="Enquiry type">
+        <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="perform">Performance</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="classes">Online classes</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="workshop">Music Therapy</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="ensemble">Ensemble</button>
       </div>
 
       <!-- IMPORTANT: replace the e-mail in the action below to route enquiries.
@@ -41,55 +46,61 @@
         <input type="hidden" name="_subject" value="Website enquiry: Book a performance">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_honey">
 
-        <div class="field"><label>Your name</label><input type="text" name="Name" required></div>
-        <div class="field"><label>Email</label><input type="email" name="Email" required></div>
-        <div class="field"><label>Phone / WhatsApp</label><input type="text" name="Phone"></div>
+        <div class="contact-fields contact-fields--two">
+          <div class="field"><label for="contact-name">Your name</label><input id="contact-name" type="text" name="Name" autocomplete="name" required></div>
+          <div class="field"><label for="contact-email">Email address</label><input id="contact-email" type="email" name="Email" autocomplete="email" required></div>
+        </div>
+        <div class="field"><label for="contact-phone">Phone or WhatsApp</label><input id="contact-phone" type="tel" name="Phone" autocomplete="tel"></div>
 
         <!-- intent-specific panes -->
         <div class="tabpane" data-pane="perform">
-          <div class="field"><label>Type of performance</label>
-            <select name="Performance type"><option>Solo Carnatic concert</option><option>Lead vocal for dance ballet / arangetram</option><option>Fusion / jugalbandi</option><option>Not sure yet</option></select></div>
-          <div class="field"><label>Tell us about the event</label><textarea name="Details" rows="4" placeholder="Occasion, city and anything else we should know."></textarea></div>
+          <div class="field"><label for="performance-type">Type of performance</label>
+            <select id="performance-type" name="Performance type"><option>Solo Carnatic concert</option><option>Lead vocal for dance ballet / arangetram</option><option>Fusion / jugalbandi</option><option>Not sure yet</option></select></div>
+          <div class="field"><label for="performance-details">Tell us about the event</label><textarea id="performance-details" name="Performance details" rows="4" placeholder="Occasion, city and anything else we should know…"></textarea></div>
         </div>
         <div class="tabpane" data-pane="classes" style="display:none">
-          <div class="field"><label>Student level</label>
-            <select name="Level"><option>Beginner</option><option>Intermediate</option><option>Professional</option></select></div>
-          <div class="field"><label>Where are you based?</label><input type="text" name="Location"></div>
-          <div class="field"><label>Anything else</label><textarea name="Details" rows="3" placeholder="Preferred timing, goals, etc."></textarea></div>
+          <div class="field"><label for="student-level">Student level</label>
+            <select id="student-level" name="Level"><option>Beginner</option><option>Intermediate</option><option>Professional</option></select></div>
+          <div class="field"><label for="student-location">Where are you based?</label><input id="student-location" type="text" name="Location" autocomplete="address-level2"></div>
+          <div class="field"><label for="class-details">Anything else</label><textarea id="class-details" name="Class details" rows="3" placeholder="Preferred timing and learning goals…"></textarea></div>
         </div>
         <div class="tabpane" data-pane="workshop" style="display:none">
-          <div class="field"><label>Organisation</label><input type="text" name="Organisation"></div>
-          <div class="field"><label>Team size</label><input type="text" name="Team size"></div>
-          <div class="field"><label>What are you looking for?</label><textarea name="Details" rows="3" placeholder="Context for the Music Therapy session."></textarea></div>
+          <div class="field"><label for="organisation">Organisation</label><input id="organisation" type="text" name="Organisation" autocomplete="organization"></div>
+          <div class="field"><label for="team-size">Team size</label><input id="team-size" type="number" min="1" inputmode="numeric" name="Team size"></div>
+          <div class="field"><label for="workshop-details">What are you looking for?</label><textarea id="workshop-details" name="Workshop details" rows="3" placeholder="Context for the Music Therapy session…"></textarea></div>
         </div>
         <div class="tabpane" data-pane="ensemble" style="display:none">
-          <div class="field"><label>Ensemble needed</label>
-            <select name="Ensemble"><option>Solo concert</option><option>Dance accompaniment</option><option>Fusion ensemble</option><option>Full orchestra</option></select></div>
-          <div class="field"><label>Event details</label><textarea name="Details" rows="4" placeholder="Occasion, city, rough dates, size of programme."></textarea></div>
+          <div class="field"><label for="ensemble-type">Ensemble needed</label>
+            <select id="ensemble-type" name="Ensemble"><option>Solo concert</option><option>Dance accompaniment</option><option>Fusion ensemble</option><option>Full orchestra</option></select></div>
+          <div class="field"><label for="ensemble-details">Event details</label><textarea id="ensemble-details" name="Ensemble details" rows="4" placeholder="Occasion, city and size of programme…"></textarea></div>
         </div>
 
-        <button type="submit" class="btn" style="width:100%">Send enquiry</button>
+        <button type="submit" class="contact-submit">Send enquiry <span aria-hidden="true">↗</span></button>
+        <p class="contact-form__note">Your details are used only to respond to this enquiry.</p>
       </form>
     </div>
 
-    <!-- DIRECT DETAILS -->
-    <div class="reveal">
-      <p class="kicker">Prefer to reach out directly?</p>
-      <h2 class="display">A message is all it takes.</h2>
-      <ul class="awards" style="margin-bottom:24px">
-        <li><span class="yr">&#9742;</span><span class="ti"><a id="c-phone" href="#">Call</a></span></li>
-        <li><span class="yr">&#9993;</span><span class="ti"><a id="c-email" href="#">Email</a></span></li>
-        <li><span class="yr">&#128172;</span><span class="ti"><a id="c-wa" href="#" target="_blank" rel="noopener">WhatsApp</a></span></li>
-        <li><span class="yr">&#128205;</span><span class="ti">Vashi, Navi Mumbai, India</span></li>
-      </ul>
-      <div class="frame" style="box-shadow:none">
-        <iframe title="Location" src="https://www.google.com/maps?q=Vashi,Navi%20Mumbai&output=embed" width="100%" height="300" style="border:0" loading="lazy"></iframe>
+    <aside class="contact-direct reveal">
+      <div class="contact-direct__heading">
+        <span>02</span>
+        <div><p class="kicker">Direct contact</p><h2 class="display">Prefer a quick message?</h2></div>
       </div>
-    </div>
+      <p class="contact-direct__intro">Reach out directly for an initial conversation. WhatsApp is often the quickest way to begin.</p>
+      <div class="contact-methods">
+        <a id="c-wa" class="contact-method contact-method--primary" href="https://wa.me/919820126711" target="_blank" rel="noopener"><span class="contact-method__label">WhatsApp</span><strong>Message +91 98201 26711</strong><i aria-hidden="true">↗</i></a>
+        <a id="c-phone" class="contact-method" href="tel:919820126711"><span class="contact-method__label">Telephone</span><strong>+91 98201 26711</strong><i aria-hidden="true">↗</i></a>
+        <a id="c-email" class="contact-method" href="mailto:sivaprasadnn@gmail.com"><span class="contact-method__label">Email</span><strong>sivaprasadnn@gmail.com</strong><i aria-hidden="true">↗</i></a>
+      </div>
+      <div class="contact-location">
+        <div class="contact-location__copy"><span>Based in</span><strong>Vashi, Navi Mumbai, India</strong></div>
+        <div class="contact-map"><iframe title="Map showing Vashi, Navi Mumbai" src="https://www.google.com/maps?q=Vashi,Navi%20Mumbai&output=embed" loading="lazy"></iframe></div>
+      </div>
+    </aside>
   </div>
 </section>
+</main>
 
 <div id="site-footer"></div>
 <script src="js/data.js"></script>
@@ -98,9 +109,10 @@
 <script>
   // fill direct-contact links from data.js
   (function(){var C=(window.SITE||{}).contact||{};
-    var p=document.getElementById('c-phone'); if(p){p.href='tel:'+(C.phoneRaw||'');p.textContent=C.phone||'Call';}
-    var e=document.getElementById('c-email'); if(e){e.href='mailto:'+(C.email||'');e.textContent=C.email||'Email';}
-    var w=document.getElementById('c-wa'); if(w){w.href='https://wa.me/'+(C.phoneRaw||'');w.textContent='WhatsApp '+(C.phone||'');}
+    function setMethod(id,href,value){var el=document.getElementById(id);if(!el)return;el.href=href;var strong=el.querySelector('strong');if(strong)strong.textContent=value;}
+    setMethod('c-phone','tel:'+(C.phoneRaw||''),C.phone||'Call');
+    setMethod('c-email','mailto:'+(C.email||''),C.email||'Email');
+    setMethod('c-wa','https://wa.me/'+(C.phoneRaw||''),'Message '+(C.phone||''));
   })();
 </script>
 </body>
