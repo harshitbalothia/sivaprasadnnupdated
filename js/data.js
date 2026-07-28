@@ -22,7 +22,8 @@ window.SITE = {
 
   /* ---- performance videos (YouTube). Add/remove freely. ----
      id = the code after watch?v= in a YouTube link.
-     group = "carnatic" | "dance" | "fusion"  (used to filter on Music page) */
+     group = "carnatic" | "dance" | "fusion" | "conversations"
+     (used to filter on Music page) */
   videos: [
     { id:"xEUA_AJr58M", title:"Carnatic Vocal, Raga Hamsadhwani",   group:"carnatic" },
     { id:"YpI_792nNmY", title:"Live Performance",                   group:"carnatic" },
@@ -35,7 +36,10 @@ window.SITE = {
     { id:"1O6MPVjq5gw", title:"Bharatanatyam Recital",             group:"dance" },
     { id:"pkSUWfRqPOE", title:"Classical Dance Recital",           group:"dance" },
     { id:"opPvCPI-raw", title:"Fusion Jugalbandi",                 group:"fusion" },
-    { id:"GobBH3Z_lPQ", title:"Live Jugalbandi Ensemble",          group:"fusion" }
+    { id:"GobBH3Z_lPQ", title:"Live Jugalbandi Ensemble",          group:"fusion" },
+    { id:"7RHTrpgFVtc", title:"In conversation with Sivaprasad NN", group:"conversations" },
+    { id:"53iI7rCHFJk", title:"Sivaprasad NN, an interview",        group:"conversations" },
+    { id:"0PnHYO3nUSc", title:"A conversation on music and life",   group:"conversations" }
   ],
 
   /* ---- locally hosted performance videos ---- */
@@ -55,7 +59,25 @@ window.SITE = {
     { src:"assets/videos/Sreechakra.mp4", title:"Sree Chakra Raja", group:"carnatic" },
     { src:"assets/videos/Swara gajavadana.mp4", title:"Gajavadana Swaras", group:"carnatic" },
     { src:"assets/videos/Test.mp4", title:"Live music excerpt", group:"carnatic" },
-    { src:"assets/videos/WhatsApp Video 2026-07-09 at 7.38.44 PM.mp4", title:"Live Carnatic performance", group:"carnatic" }
+    { src:"assets/videos/WhatsApp Video 2026-07-09 at 7.38.44 PM.mp4", title:"Live Carnatic performance", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-01.mp4", title:"Classical performance excerpt", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-02.mp4", title:"An expressive live performance", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-03.mp4", title:"Carnatic music on stage", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-04.mp4", title:"Varunasandhi Kautwam", group:"dance" },
+    { src:"assets/videos/new-collection/video-05.mp4", title:"Vocal accompaniment in performance", group:"dance" },
+    { src:"assets/videos/new-collection/video-06.mp4", title:"A moment from the concert stage", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-07.mp4", title:"A glimpse from the final rehearsal", group:"dance" },
+    { src:"assets/videos/new-collection/video-08.mp4", title:"On compositions and expression", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-09.mp4", title:"Seated on stage with the ensemble", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-10.mp4", title:"A timeless piece of emotion", group:"dance" },
+    { src:"assets/videos/new-collection/video-11.mp4", title:"Shaping a performance together", group:"dance" },
+    { src:"assets/videos/new-collection/video-12.mp4", title:"Sharing a special composition", group:"dance" },
+    { src:"assets/videos/new-collection/video-13.mp4", title:"Music for classical dance", group:"dance" },
+    { src:"assets/videos/new-collection/video-14.mp4", title:"Live accompaniment excerpt", group:"dance" },
+    { src:"assets/videos/new-collection/video-15.mp4", title:"Om Sharavanabhava", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-16.mp4", title:"The Devarnamas", group:"carnatic" },
+    { src:"assets/videos/new-collection/video-17.mp4", title:"The art of absolute expression", group:"fusion" },
+    { src:"assets/videos/new-collection/video-18.mp4", title:"An intimate music excerpt", group:"carnatic" }
   ],
 
   /* ---- awards & honours. Newest first. ---- */
@@ -106,7 +128,39 @@ window.SITE = {
     { src:"assets/GAllery /photo-55.jpg", shape:"standard" },
     { src:"assets/GAllery /sivaprasadnn-bio-24.jpg", shape:"portrait" },
     { src:"assets/GAllery /photo-54.jpg", shape:"feature" },
-    { src:"assets/photos/performances/photo-62.jpg", shape:"feature" }
+    { src:"assets/photos/performances/photo-62.jpg", shape:"feature" },
+    { src:"assets/photos/performances/new/performance-01.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-02.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-03.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-04.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-05.jpg", shape:"standard" },
+    { src:"assets/photos/performances/new/performance-06.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-07.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-08.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-09.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-10.jpg", shape:"standard" },
+    { src:"assets/photos/performances/new/performance-11.jpg", shape:"feature" },
+    { src:"assets/photos/performances/new/performance-12.jpg", shape:"feature" },
+    { src:"assets/photos/performances/new/performance-13.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-14.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-15.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-16.jpg", shape:"standard" },
+    { src:"assets/photos/performances/new/performance-17.jpg", shape:"feature" },
+    { src:"assets/photos/performances/new/performance-18.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-19.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-20.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-21.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-22.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-23.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-24.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-25.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-26.jpg", shape:"standard" },
+    { src:"assets/photos/performances/new/performance-27.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-28.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-29.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-30.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-31.jpg", shape:"portrait" },
+    { src:"assets/photos/performances/new/performance-32.jpg", shape:"portrait" }
   ],
 
   /* ---- gallery: how many optimized photos exist in assets/photos/gallery ---- */

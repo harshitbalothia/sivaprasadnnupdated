@@ -247,7 +247,7 @@
     var musicItems=youtubeItems.concat(localItems);
 
     function musicGroupLabel(group){
-      return group==='dance' ? 'Dance' : group==='fusion' ? 'Fusion' : 'Carnatic';
+      return group==='dance' ? 'Dance' : group==='fusion' ? 'Fusion' : group==='conversations' ? 'Conversations & Interviews' : 'Carnatic';
     }
     function renderMusicLibrary(group){
       var items=musicItems.filter(function(v){return group==='all'||v.group===group;});
@@ -274,21 +274,52 @@
     });
     renderMusicLibrary('all');
   }
-  // click a video thumb -> swap to iframe
+  // Click a video thumbnail to play it. YouTube cannot reliably embed from a
+  // file:// preview because that protocol does not send a valid web referrer.
   document.addEventListener('click',function(e){
     var t=e.target.closest('.video-thumb'); if(!t)return;
     var id=t.getAttribute('data-yt');
+    if(window.location.protocol==='file:'){
+      window.open('https://www.youtube.com/watch?v='+encodeURIComponent(id),'_blank','noopener,noreferrer');
+      return;
+    }
     t.classList.remove('video-thumb');
-    t.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+    t.innerHTML='<iframe title="YouTube video player" src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1"'
+      +' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"'
+      +' referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
   });
 
   /* ---------- local performance video carousel ---------- */
   document.querySelectorAll('[data-video-carousel]').forEach(function(carousel){
     var track=carousel.querySelector('.video-carousel__track');
-    var slides=[].slice.call(carousel.querySelectorAll('.video-carousel__slide'));
+    var slides=[];
     var prev=carousel.querySelector('.video-carousel__arrow--prev');
     var next=carousel.querySelector('.video-carousel__arrow--next');
     var index=0;
+    var homeCarousel=carousel.hasAttribute('data-home-video-carousel');
+    var homeTabs=document.querySelector('[data-home-video-tabs]');
+    var homeItems=(S.videos||[]).map(function(v){
+      return {type:'youtube',id:v.id,title:v.title,group:v.group};
+    }).concat((S.localVideos||[]).map(function(v){
+      return {type:'local',src:v.src,title:v.title,group:v.group};
+    }));
+
+    function carouselGroupLabel(group){
+      return group==='dance' ? 'Dance' : group==='fusion' ? 'Fusion' : group==='conversations' ? 'Conversations & Interviews' : 'Carnatic';
+    }
+    function renderHomeCarousel(group){
+      var items=homeItems.filter(function(item){return group==='all'||item.group===group;});
+      track.innerHTML=items.map(function(item){
+        var media=item.type==='youtube'
+          ? '<div class="video video-thumb vid-card" data-yt="'+item.id+'"><img loading="lazy" src="https://i.ytimg.com/vi/'+item.id+'/hqdefault.jpg" alt="'+item.title+'"><span class="home-video-card__play" aria-hidden="true">▶</span></div>'
+          : '<video class="video vid-card" src="'+item.src+'" controls preload="metadata" playsinline aria-label="'+item.title+'"></video>';
+        return '<article class="video-carousel__slide home-video-card" data-video-group="'+item.group+'">'+media
+          +'<div class="home-video-card__body"><p class="vcaption">'+item.title+'</p></div></article>';
+      }).join('');
+      slides=[].slice.call(carousel.querySelectorAll('.video-carousel__slide'));
+      index=0;
+      update();
+    }
 
     function visibleSlides(){return window.matchMedia('(max-width:700px)').matches ? 1 : 2;}
     function update(){
@@ -309,19 +340,37 @@
         var id=holder.getAttribute('data-yt');
         var caption=holder.closest('.video-carousel__slide').querySelector('.vcaption').textContent;
         holder.classList.add('video-thumb');
-        holder.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+caption+'">';
+        holder.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+caption+'">'
+          +(homeCarousel?'<span class="home-video-card__play" aria-hidden="true">▶</span>':'');
       });
       index+=direction;
       update();
     }
     prev.addEventListener('click',function(){move(-1);});
     next.addEventListener('click',function(){move(1);});
+    if(homeCarousel&&homeTabs){
+      homeTabs.addEventListener('click',function(e){
+        var button=e.target.closest('[data-home-video-filter]');
+        if(!button)return;
+        homeTabs.querySelectorAll('[data-home-video-filter]').forEach(function(tab){
+          var active=tab===button;
+          tab.classList.toggle('active',active);
+          tab.setAttribute('aria-selected',String(active));
+        });
+        carousel.querySelectorAll('video').forEach(function(video){video.pause();});
+        renderHomeCarousel(button.getAttribute('data-home-video-filter'));
+      });
+    }
     carousel.addEventListener('keydown',function(e){
       if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}
       if(e.key==='ArrowRight'){e.preventDefault();move(1);}
     });
     window.addEventListener('resize',update,{passive:true});
-    update();
+    if(homeCarousel)renderHomeCarousel('all');
+    else {
+      slides=[].slice.call(carousel.querySelectorAll('.video-carousel__slide'));
+      update();
+    }
   });
 
   /* ---------- render awards (data-awards) ---------- */
