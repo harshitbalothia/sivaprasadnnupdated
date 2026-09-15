@@ -12,55 +12,145 @@
   function reveal(el){ if(io) io.observe(el); else el.classList.add('in'); }
   document.querySelectorAll('.reveal').forEach(reveal);
 
-  /* ---------- Learn page scroll storytelling ---------- */
-  var learnStatement=document.querySelector('[data-scroll-text]');
-  var learnProcess=document.querySelector('[data-learn-process]');
-  if(learnStatement||learnProcess){
-    var learnWords=[];
-    if(learnStatement){
-      var statementText=learnStatement.textContent.trim().split(/\s+/);
-      learnStatement.textContent='';
-      statementText.forEach(function(word,index){
-        var span=document.createElement('span');
-        span.className='scroll-word';
-        span.textContent=word+(index<statementText.length-1?' ':'');
-        learnStatement.appendChild(span);
-        learnWords.push(span);
+  /* ---------- Learn curriculum tabs and stage navigation ---------- */
+  var learnTabsets=[];
+  document.querySelectorAll('[data-learn-tabs]').forEach(function(root){
+    var tablist=root.querySelector('[data-learn-tablist]');
+    var tabs=[].slice.call(root.querySelectorAll('[data-learn-tab]'));
+    var panels=[].slice.call(root.querySelectorAll('[data-learn-panel]'));
+    if(!tablist||!tabs.length||!panels.length)return;
+
+    tablist.setAttribute('role','tablist');
+
+    function activateLearnTab(tab,options){
+      options=options||{};
+      var panelId=tab.getAttribute('data-learn-tab');
+      var panel=document.getElementById(panelId);
+      if(!panel||!root.contains(panel))return;
+
+      tabs.forEach(function(item){
+        var selected=item===tab;
+        item.setAttribute('aria-selected',String(selected));
+        item.tabIndex=selected?0:-1;
+      });
+      panels.forEach(function(item){item.hidden=item!==panel;});
+
+      if(options.focus)tab.focus({preventScroll:true});
+      if(options.updateHash&&window.history&&window.history.replaceState){
+        window.history.replaceState(null,'','#'+panelId);
+      }
+    }
+
+    tabs.forEach(function(tab,index){
+      var panelId=tab.getAttribute('data-learn-tab');
+      var panel=document.getElementById(panelId);
+      if(!panel||!root.contains(panel))return;
+      if(!tab.id)tab.id=panelId+'-tab';
+      tab.setAttribute('role','tab');
+      tab.setAttribute('aria-controls',panelId);
+      panel.setAttribute('role','tabpanel');
+      panel.setAttribute('aria-labelledby',tab.id);
+      panel.tabIndex=0;
+
+      tab.addEventListener('click',function(){activateLearnTab(tab,{updateHash:true});});
+      tab.addEventListener('keydown',function(event){
+        var next=null;
+        if(event.key==='ArrowRight')next=(index+1)%tabs.length;
+        if(event.key==='ArrowLeft')next=(index-1+tabs.length)%tabs.length;
+        if(event.key==='Home')next=0;
+        if(event.key==='End')next=tabs.length-1;
+        if(next===null)return;
+        event.preventDefault();
+        activateLearnTab(tabs[next],{focus:true,updateHash:true});
+      });
+    });
+
+    var hashId='';
+    try{hashId=decodeURIComponent(window.location.hash.slice(1));}catch(error){hashId=window.location.hash.slice(1);}
+    var initial=tabs[0];
+    tabs.forEach(function(tab){if(tab.getAttribute('data-learn-tab')===hashId)initial=tab;});
+    root.classList.add('is-enhanced');
+    activateLearnTab(initial);
+    learnTabsets.push({root:root,tabs:tabs,activate:activateLearnTab});
+  });
+
+  function activateLearnTabFromHash(){
+    var hashId='';
+    try{hashId=decodeURIComponent(window.location.hash.slice(1));}catch(error){hashId=window.location.hash.slice(1);}
+    learnTabsets.forEach(function(set){
+      set.tabs.forEach(function(tab){
+        if(tab.getAttribute('data-learn-tab')===hashId)set.activate(tab);
+      });
+    });
+  }
+  if(learnTabsets.length)window.addEventListener('hashchange',activateLearnTabFromHash);
+
+  /* Re-align direct links after fonts and injected components settle. */
+  function alignInitialHash(){
+    if(!window.location.hash)return;
+    var hashId='';
+    try{hashId=decodeURIComponent(window.location.hash.slice(1));}catch(error){hashId=window.location.hash.slice(1);}
+    var target=document.getElementById(hashId);
+    if(target)target.scrollIntoView({block:'start'});
+  }
+  function queueInitialHashAlignment(){window.setTimeout(alignInitialHash,60);}
+  if(window.location.hash){
+    if(document.readyState==='complete')queueInitialHashAlignment();
+    else window.addEventListener('load',queueInitialHashAlignment,{once:true});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(queueInitialHashAlignment);
+  }
+
+  var curriculumNav=document.querySelector('[data-curriculum-nav]');
+  if(curriculumNav){
+    var curriculumItems=[];
+    curriculumNav.querySelectorAll('a[href^="#"]').forEach(function(link){
+      var section=document.getElementById(link.getAttribute('href').slice(1));
+      if(section)curriculumItems.push({link:link,section:section});
+    });
+
+    function setCurrentCurriculum(section){
+      curriculumItems.forEach(function(item){
+        var current=item.section===section;
+        item.link.classList.toggle('is-active',current);
+        if(current)item.link.setAttribute('aria-current','location');
+        else item.link.removeAttribute('aria-current');
       });
     }
-    var processLine=learnProcess&&learnProcess.querySelector('[data-process-line]');
-    var processCards=learnProcess?[].slice.call(learnProcess.querySelectorAll('[data-process-card]')):[];
-    var processMarkers=learnProcess?[].slice.call(learnProcess.querySelectorAll('[data-process-marker]')):[];
-    var learnTicking=false;
-    function updateLearnStory(){
-      var vh=window.innerHeight;
-      if(learnStatement){
-        var textRect=learnStatement.getBoundingClientRect();
-        var textTravel=textRect.height+(vh*.48);
-        var textProgress=Math.max(0,Math.min(1,((vh*.8)-textRect.top)/textTravel));
-        var activeWords=Math.ceil(textProgress*learnWords.length);
-        learnWords.forEach(function(word,index){word.classList.toggle('active',index<activeWords);});
-      }
-      if(learnProcess&&window.innerWidth>620){
-        var processRect=learnProcess.getBoundingClientRect();
-        var processTravel=Math.max(1,processRect.height-vh);
-        var processProgress=Math.max(0,Math.min(1,-processRect.top/processTravel));
-        var activeStep=Math.min(2,Math.floor(processProgress*3));
-        if(processLine)processLine.style.transform='scaleY('+processProgress+')';
-        processCards.forEach(function(card,index){card.classList.toggle('active',index===activeStep);});
-        processMarkers.forEach(function(marker,index){marker.classList.toggle('active',index<=activeStep);});
-      }
-      learnTicking=false;
+    function currentCurriculumByPosition(){
+      var readingLine=window.innerHeight*.3;
+      var current=curriculumItems.length?curriculumItems[0].section:null;
+      curriculumItems.forEach(function(item){
+        if(item.section.getBoundingClientRect().top<=readingLine)current=item.section;
+      });
+      return current;
     }
-    function requestLearnStory(){
-      if(!learnTicking){window.requestAnimationFrame(updateLearnStory);learnTicking=true;}
+
+    curriculumItems.forEach(function(item){
+      item.link.addEventListener('click',function(){setCurrentCurriculum(item.section);});
+    });
+    if(curriculumItems.length){
+      var hashTarget=document.getElementById(window.location.hash.slice(1));
+      var hashSection=null;
+      curriculumItems.forEach(function(item){
+        if(hashTarget&&(item.section===hashTarget||item.section.contains(hashTarget)))hashSection=item.section;
+      });
+      setCurrentCurriculum(hashSection||currentCurriculumByPosition());
     }
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      learnWords.forEach(function(word){word.classList.add('active');});
-    } else {
-      window.addEventListener('scroll',requestLearnStory,{passive:true});
-      window.addEventListener('resize',requestLearnStory,{passive:true});
-      updateLearnStory();
+
+    if(curriculumItems.length&&'IntersectionObserver' in window){
+      var curriculumObserver=new IntersectionObserver(function(entries){
+        var intersecting=entries.filter(function(entry){return entry.isIntersecting;});
+        if(intersecting.length){
+          intersecting.sort(function(a,b){
+            var line=window.innerHeight*.3;
+            return Math.abs(a.boundingClientRect.top-line)-Math.abs(b.boundingClientRect.top-line);
+          });
+          setCurrentCurriculum(intersecting[0].target);
+        }else{
+          setCurrentCurriculum(currentCurriculumByPosition());
+        }
+      },{rootMargin:'-20% 0px -65% 0px',threshold:0});
+      curriculumItems.forEach(function(item){curriculumObserver.observe(item.section);});
     }
   }
 
@@ -114,7 +204,7 @@
       html=S.performanceImages.map(function(item,index){
         var f=typeof item==='string' ? item : item.src;
         var shape=typeof item==='string' ? 'standard' : (item.shape||'standard');
-        return '<figure class="performance-shot performance-shot--'+shape+' reveal" data-lb="'+f+'" style="--gallery-delay:'+(index%6)*70+'ms">'
+        return '<figure class="performance-shot performance-shot--'+shape+' reveal" data-lb="'+f+'" role="button" tabindex="0" aria-label="Open performance photograph" style="--gallery-delay:'+(index%6)*70+'ms">'
           +'<img loading="lazy" src="'+f+'" alt="Sivaprasad NN in performance">'
           +'<span class="performance-shot__number">'+String(index+1).padStart(2,'0')+'</span>'
           +'<span class="performance-shot__view">View</span></figure>';
@@ -124,7 +214,7 @@
       var limit = parseInt(galEl.getAttribute('data-limit')) || n;
       for(var i=1;i<=Math.min(limit,n);i++){
         var f='assets/photos/gallery/perf-'+String(i).padStart(2,'0')+'.jpg';
-        html+='<figure data-lb="'+f+'"><img loading="lazy" src="'+f+'" alt="Sivaprasad NN in performance"></figure>';
+        html+='<figure data-lb="'+f+'" role="button" tabindex="0" aria-label="Open performance photograph"><img loading="lazy" src="'+f+'" alt="Sivaprasad NN in performance"></figure>';
       }
     }
     galEl.innerHTML=html;
@@ -163,7 +253,7 @@
     var pn=S.pressCount||18, ph='';
     for(var p=1;p<=pn;p++){
       var pf='assets/press/clip-'+String(p).padStart(2,'0')+'.jpg';
-      ph+='<figure class="press-clipping" data-collection="'+Math.ceil(p/6)+'" data-lb="'+pf+'"><img loading="lazy" src="'+pf+'" alt="Press coverage of Sivaprasad NN"><span>'+String(p).padStart(2,'0')+'</span><b>Read</b></figure>';
+      ph+='<figure class="press-clipping" data-collection="'+Math.ceil(p/6)+'" data-lb="'+pf+'" role="button" tabindex="0" aria-label="Open press clipping '+p+'"><img loading="lazy" src="'+pf+'" alt="Press coverage of Sivaprasad NN"><span>'+String(p).padStart(2,'0')+'</span><b>Read</b></figure>';
     }
     prEl.innerHTML=ph;
 
@@ -228,7 +318,7 @@
     var group=box.getAttribute('data-group');
     var vids=(S.videos||[]).filter(function(v){return !group||v.group===group;});
     box.innerHTML=vids.map(function(v){
-      return '<div><div class="video video-thumb" data-yt="'+v.id+'">'
+      return '<div><div class="video video-thumb" data-yt="'+v.id+'" role="button" tabindex="0" aria-label="Play video">'
         +'<img loading="lazy" src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="'+v.title+'"></div>'
         +'<div class="vcaption">'+v.title+'</div></div>';
     }).join('');
@@ -253,7 +343,7 @@
       var items=musicItems.filter(function(v){return group==='all'||v.group===group;});
       musicLibrary.innerHTML=items.map(function(v,index){
         var media=v.type==='youtube'
-          ? '<div class="music-card__media video video-thumb" data-yt="'+v.id+'"><img loading="lazy" src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="'+v.title+'"><span class="music-card__play" aria-hidden="true">▶</span></div>'
+          ? '<div class="music-card__media video video-thumb" data-yt="'+v.id+'" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg" alt="'+v.title+'"><span class="music-card__play" aria-hidden="true">▶</span></div>'
           : '<div class="music-card__media"><video controls preload="metadata" playsinline src="'+v.src+'" aria-label="'+v.title+'"></video></div>';
         return '<article class="music-card" style="--music-delay:'+(index%6)*55+'ms">'+media
           +'<div class="music-card__body"><span>'+musicGroupLabel(v.group)+'</span><h3>'+v.title+'</h3></div></article>';
@@ -276,17 +366,29 @@
   }
   // Click a video thumbnail to play it. YouTube cannot reliably embed from a
   // file:// preview because that protocol does not send a valid web referrer.
-  document.addEventListener('click',function(e){
-    var t=e.target.closest('.video-thumb'); if(!t)return;
+  function playVideoThumbnail(t){
     var id=t.getAttribute('data-yt');
     if(window.location.protocol==='file:'){
       window.open('https://www.youtube.com/watch?v='+encodeURIComponent(id),'_blank','noopener,noreferrer');
       return;
     }
     t.classList.remove('video-thumb');
+    t.removeAttribute('role');
+    t.removeAttribute('tabindex');
+    t.removeAttribute('aria-label');
     t.innerHTML='<iframe title="YouTube video player" src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1"'
       +' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"'
       +' referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.video-thumb'); if(!t)return;
+    playVideoThumbnail(t);
+  });
+  document.addEventListener('keydown',function(e){
+    var t=e.target.closest('.video-thumb');
+    if(!t||(e.key!=='Enter'&&e.key!==' '))return;
+    e.preventDefault();
+    playVideoThumbnail(t);
   });
 
   /* ---------- local performance video carousel ---------- */
@@ -311,7 +413,7 @@
       var items=homeItems.filter(function(item){return group==='all'||item.group===group;});
       track.innerHTML=items.map(function(item){
         var media=item.type==='youtube'
-          ? '<div class="video video-thumb vid-card" data-yt="'+item.id+'"><img loading="lazy" src="https://i.ytimg.com/vi/'+item.id+'/hqdefault.jpg" alt="'+item.title+'"><span class="home-video-card__play" aria-hidden="true">▶</span></div>'
+          ? '<div class="video video-thumb vid-card" data-yt="'+item.id+'" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/'+item.id+'/hqdefault.jpg" alt="'+item.title+'"><span class="home-video-card__play" aria-hidden="true">▶</span></div>'
           : '<video class="video vid-card" src="'+item.src+'" controls preload="metadata" playsinline aria-label="'+item.title+'"></video>';
         return '<article class="video-carousel__slide home-video-card" data-video-group="'+item.group+'">'+media
           +'<div class="home-video-card__body"><p class="vcaption">'+item.title+'</p></div></article>';
@@ -340,6 +442,9 @@
         var id=holder.getAttribute('data-yt');
         var caption=holder.closest('.video-carousel__slide').querySelector('.vcaption').textContent;
         holder.classList.add('video-thumb');
+        holder.setAttribute('role','button');
+        holder.setAttribute('tabindex','0');
+        holder.setAttribute('aria-label','Play video');
         holder.innerHTML='<img loading="lazy" src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="'+caption+'">'
           +(homeCarousel?'<span class="home-video-card__play" aria-hidden="true">▶</span>':'');
       });
@@ -390,59 +495,77 @@
   if(mqEl){
     var quotes=S.quotes||[];
     function buildCard(c){
-      var initials=c.by.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
-      return '<div class="tcard">'
-        +'<div class="tcard__head">'
-        +'<span class="tcard__avatar">'+initials+'</span>'
-        +'<span class="tcard__source">'+c.by+'</span>'
-        +'</div>'
-        +'<p class="tcard__text">&ldquo;'+c.q+'&rdquo;</p>'
-        +'</div>';
+      return '<figure class="tcard">'
+        +'<blockquote class="tcard__text">&ldquo;'+c.q+'&rdquo;</blockquote>'
+        +'<figcaption class="tcard__source">'+c.by+'</figcaption>'
+        +'</figure>';
     }
     var set='';
-    for(var r=0;r<4;r++){
-      quotes.forEach(function(c){ set+=buildCard(c); });
-    }
+    quotes.forEach(function(c){ set+=buildCard(c); });
     mqEl.innerHTML=set;
   }
 
   /* ---------- lightbox ---------- */
-  var imgs=[], idx=0;
+  var imgs=[], idx=0, lastLightboxTrigger=null;
+  function closeLB(){
+    var d=document.getElementById('lb');
+    if(!d||!d.classList.contains('open'))return;
+    d.classList.remove('open');
+    if(lastLightboxTrigger&&document.contains(lastLightboxTrigger))lastLightboxTrigger.focus({preventScroll:true});
+  }
   function buildLB(){
     if(document.getElementById('lb'))return;
     var d=document.createElement('div'); d.id='lb'; d.className='lb';
-    d.innerHTML='<span class="x">&times;</span><span class="nav-a prev">&#8249;</span><img><span class="nav-a next">&#8250;</span>';
+    d.setAttribute('role','dialog');
+    d.setAttribute('aria-modal','true');
+    d.setAttribute('aria-label','Image viewer');
+    d.innerHTML='<button class="x" type="button" aria-label="Close image viewer">&times;</button><button class="nav-a prev" type="button" aria-label="Previous image">&#8249;</button><img alt=""><button class="nav-a next" type="button" aria-label="Next image">&#8250;</button>';
     document.body.appendChild(d);
-    d.querySelector('.x').onclick=function(){d.classList.remove('open');};
-    d.onclick=function(e){if(e.target===d)d.classList.remove('open');};
+    d.querySelector('.x').onclick=closeLB;
+    d.onclick=function(e){if(e.target===d)closeLB();};
     d.querySelector('.prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
     d.querySelector('.next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
     document.addEventListener('keydown',function(e){
       if(!d.classList.contains('open'))return;
-      if(e.key==='Escape')d.classList.remove('open');
+      if(e.key==='Escape')closeLB();
       if(e.key==='ArrowLeft')d.querySelector('.prev').click();
       if(e.key==='ArrowRight')d.querySelector('.next').click();
+      if(e.key==='Tab'){
+        var controls=[].slice.call(d.querySelectorAll('button:not([hidden])'));
+        var first=controls[0], last=controls[controls.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
     });
   }
-  function show(){document.querySelector('#lb img').src=imgs[idx];}
-  document.addEventListener('click',function(e){
-    var fig=e.target.closest('[data-lb]'); if(!fig)return;
+  function show(){
+    var d=document.getElementById('lb');
+    var image=d.querySelector('img');
+    image.src=imgs[idx];
+    image.alt='Gallery image '+(idx+1)+' of '+imgs.length;
+    d.querySelector('.prev').hidden=imgs.length<2;
+    d.querySelector('.next').hidden=imgs.length<2;
+  }
+  function openLB(fig){
     buildLB();
     var scope=fig.closest('[data-gallery],[data-press]')||document;
-    imgs=[].map.call(scope.querySelectorAll('[data-lb]'),function(f){return f.getAttribute('data-lb');});
+    imgs=[].filter.call(scope.querySelectorAll('[data-lb]'),function(f){return !f.classList.contains('is-hidden');}).map(function(f){return f.getAttribute('data-lb');});
     idx=imgs.indexOf(fig.getAttribute('data-lb'));
-    show(); document.getElementById('lb').classList.add('open');
+    if(idx<0)idx=0;
+    lastLightboxTrigger=fig;
+    show();
+    document.getElementById('lb').classList.add('open');
+    document.getElementById('lb').querySelector('.x').focus({preventScroll:true});
+  }
+  document.addEventListener('click',function(e){
+    var fig=e.target.closest('[data-lb]'); if(!fig)return;
+    openLB(fig);
   });
-
-  /* ---------- spotlight card glow tracking ---------- */
-  document.querySelectorAll('.spotlight-card').forEach(function(card){
-    card.addEventListener('pointermove',function(e){
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      card.style.setProperty('--glow-x', x + 'px');
-      card.style.setProperty('--glow-y', y + 'px');
-    });
+  document.addEventListener('keydown',function(e){
+    var fig=e.target.closest('[data-lb]');
+    if(!fig||(e.key!=='Enter'&&e.key!==' '))return;
+    e.preventDefault();
+    openLB(fig);
   });
 
   /* ---------- CTA banner: staggered scroll reveal ---------- */
@@ -476,6 +599,101 @@
       var progress = (vh - rect.top) / (vh + rect.height);
       ctaBg.style.transform = 'scale(1.08) translateY(' + ((progress - 0.5) * 30) + 'px)';
     },{passive:true});
+  }
+
+  /* ---------- dedicated performance enquiry form ---------- */
+  var performanceForm=document.querySelector('[data-performance-enquiry-form]');
+  if(performanceForm){
+    var performanceRehearsalCount=performanceForm.querySelector('#performance-rehearsal-count');
+    var performanceRehearsalsUnknown=performanceForm.querySelector('[data-rehearsals-unknown]');
+    var performanceGallery=document.querySelector('.performance-gallery');
+    var performanceAnchorObserver=null;
+    var performanceAnchorTimers=[];
+
+    function alignPerformanceEnquiry(){
+      performanceForm.closest('#performance-enquiry').scrollIntoView({block:'start'});
+    }
+
+    function keepPerformanceEnquiryAligned(){
+      if(performanceAnchorObserver)performanceAnchorObserver.disconnect();
+      performanceAnchorTimers.forEach(function(timer){window.clearTimeout(timer);});
+      performanceAnchorTimers=[];
+      alignPerformanceEnquiry();
+
+      if(performanceGallery&&'ResizeObserver' in window){
+        performanceAnchorObserver=new ResizeObserver(alignPerformanceEnquiry);
+        performanceAnchorObserver.observe(performanceGallery);
+      }
+
+      [180,480,900,1500,2400,3400].forEach(function(delay){
+        performanceAnchorTimers.push(window.setTimeout(alignPerformanceEnquiry,delay));
+      });
+      performanceAnchorTimers.push(window.setTimeout(function(){
+        if(performanceAnchorObserver)performanceAnchorObserver.disconnect();
+        performanceAnchorObserver=null;
+      },3600));
+    }
+
+    document.querySelectorAll('a[href="#performance-enquiry"]').forEach(function(link){
+      link.addEventListener('click',function(){window.setTimeout(keepPerformanceEnquiryAligned,0);});
+    });
+    if(window.location.hash==='#performance-enquiry')window.setTimeout(keepPerformanceEnquiryAligned,0);
+
+    function syncPerformanceRehearsals(){
+      if(!performanceRehearsalCount||!performanceRehearsalsUnknown)return;
+      var unknown=performanceRehearsalsUnknown.checked;
+      performanceRehearsalCount.disabled=unknown;
+      performanceRehearsalCount.setAttribute('aria-disabled',String(unknown));
+      if(unknown)performanceRehearsalCount.value='';
+    }
+
+    if(performanceRehearsalsUnknown){
+      performanceRehearsalsUnknown.addEventListener('change',syncPerformanceRehearsals);
+      syncPerformanceRehearsals();
+    }
+  }
+
+  /* ---------- dedicated ensemble enquiry form ---------- */
+  var ensembleForm=document.querySelector('[data-ensemble-form]');
+  if(ensembleForm){
+    var ensembleDate=ensembleForm.querySelector('#ensemble-date');
+    var ensembleDateUnconfirmed=ensembleForm.querySelector('[data-date-unconfirmed]');
+    var artistGroup=ensembleForm.querySelector('[data-artist-group]');
+    var artistOptions=artistGroup?[].slice.call(artistGroup.querySelectorAll('input[type="checkbox"]')):[];
+    var artistError=ensembleForm.querySelector('#ensemble-artists-error');
+
+    function syncEnsembleDate(){
+      if(!ensembleDate||!ensembleDateUnconfirmed)return;
+      var unconfirmed=ensembleDateUnconfirmed.checked;
+      ensembleDate.disabled=unconfirmed;
+      ensembleDate.required=!unconfirmed;
+      ensembleDate.setAttribute('aria-required',String(!unconfirmed));
+      if(unconfirmed)ensembleDate.value='';
+    }
+
+    function syncArtistSelection(showError){
+      if(!artistOptions.length)return true;
+      var selected=artistOptions.some(function(option){return option.checked;});
+      artistOptions[0].setCustomValidity(selected?'':'Select at least one artist or choose not sure.');
+      if(artistGroup){
+        artistGroup.classList.toggle('has-error',Boolean(showError&&!selected));
+        artistGroup.setAttribute('aria-invalid',String(Boolean(showError&&!selected)));
+      }
+      if(artistError)artistError.hidden=!showError||selected;
+      return selected;
+    }
+
+    if(ensembleDateUnconfirmed){
+      ensembleDateUnconfirmed.addEventListener('change',syncEnsembleDate);
+      syncEnsembleDate();
+    }
+    artistOptions.forEach(function(option){
+      option.addEventListener('change',function(){syncArtistSelection(false);});
+    });
+    if(artistOptions.length){
+      artistOptions[0].addEventListener('invalid',function(){syncArtistSelection(true);});
+      syncArtistSelection(false);
+    }
   }
 
   /* ---------- contact form tabs ---------- */

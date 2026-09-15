@@ -10,17 +10,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=site-polish-1">
 </head>
 <body data-page="performances">
 <div id="site-header"></div>
+<main id="main-content">
 
 <header class="pagehead performance-hero">
   <div class="bg"><img src="assets/GAllery /photo-26.jpg" alt="Sivaprasad NN singing with an ensemble on stage"></div>
   <div class="inner wrap">
     <p class="kicker performance-hero__eyebrow">In performance</p>
-    <h1 class="display">Moments from the stage.</h1>
-    <p class="performance-hero__intro">Concerts, dance and collaboration, held together by voice.</p>
+    <h1 class="display">Music that comes alive on stage.</h1>
+    <p class="performance-hero__intro">Carnatic concerts, dance productions and collaborative performances, rooted in tradition and shaped for every stage.</p>
+    <div class="performance-hero__actions">
+      <a href="#performance-enquiry" class="btn light performance-hero__cta">Enquire Now</a>
+    </div>
   </div>
   <a class="performance-hero__scroll" href="#performance-story" aria-label="Continue to the performance archive"><span></span>Explore</a>
 </header>
@@ -32,7 +36,7 @@
       <h2 class="display">Every performance begins with listening.</h2>
     </div>
     <div class="performance-story__copy reveal">
-      <p class="lead">A curated selection from four decades of concerts, ballets and collaborations. International engagements are presented as collaborations, in the spirit of a portfolio rather than a calendar.</p>
+      <p class="lead">A curated selection from four decades of concerts, dance productions and artistic collaborations, each shaped by the music, movement and people sharing the stage.</p>
       <div class="performance-story__note">Concerts · ballets · collaborations</div>
     </div>
   </div>
@@ -61,7 +65,7 @@
         <h2 class="display">Bring the voice to your stage.</h2>
         <p>For a Carnatic concert, lead vocal for a dance production, or a fusion set, share your programme and begin the conversation.</p>
         <div class="performance-booking__actions">
-          <a href="contact.html?intent=perform" class="btn light">Enquire to book</a>
+          <a href="#performance-enquiry" class="btn light">Enquire to book</a>
           <a href="music.html" class="performance-booking__link">Hear the music <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -69,9 +73,155 @@
   </div>
 </section>
 
+<section class="performance-enquiry" id="performance-enquiry">
+  <div class="wrap">
+    <header class="performance-enquiry__head center">
+      <p class="kicker">Plan the details</p>
+      <h2 class="display" id="performance-enquiry-title">Performance enquiry form</h2>
+      <p>Share the essential details about your event, and we will respond with the next steps.</p>
+    </header>
+
+    <form class="performance-form" data-performance-enquiry-form aria-labelledby="performance-enquiry-title" action="https://formsubmit.co/sivaprasadnn@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Website enquiry: Performance booking">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input class="performance-form__honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-label="Leave this field blank" aria-hidden="true">
+
+      <section class="performance-form__section" aria-labelledby="performance-form-contact-heading">
+        <div class="performance-form__section-head">
+          <span aria-hidden="true">01</span>
+          <div>
+            <h3 id="performance-form-contact-heading">Your details</h3>
+            <p>How we can reach you.</p>
+          </div>
+        </div>
+        <div class="performance-form__section-body">
+          <div class="performance-form__grid performance-form__grid--two">
+            <div class="performance-form__field">
+              <label for="performance-name">Name <span aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <input id="performance-name" type="text" name="Name" autocomplete="name" required>
+            </div>
+            <div class="performance-form__field">
+              <label for="performance-email">Email <span aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <input id="performance-email" type="email" name="Email" autocomplete="email" spellcheck="false" required>
+            </div>
+          </div>
+          <div class="performance-form__field">
+            <label for="performance-phone">Phone / WhatsApp</label>
+            <input id="performance-phone" type="tel" name="Phone / WhatsApp" autocomplete="tel">
+          </div>
+        </div>
+      </section>
+
+      <section class="performance-form__section" aria-labelledby="performance-form-event-heading">
+        <div class="performance-form__section-head">
+          <span aria-hidden="true">02</span>
+          <div>
+            <h3 id="performance-form-event-heading">The engagement</h3>
+            <p>What you are planning and where it will take place.</p>
+          </div>
+        </div>
+        <div class="performance-form__section-body">
+          <div class="performance-form__grid performance-form__grid--two">
+            <div class="performance-form__field">
+              <label for="performance-type">Type of Engagement <span aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <select id="performance-type" name="Type of Engagement" required>
+                <option value="" selected disabled>Select an engagement</option>
+                <option>Carnatic Concert</option>
+                <option>Arangetram / Rangapravesham</option>
+                <option>Dance Performance / Production</option>
+                <option>Festival / Cultural Program</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="performance-form__field">
+              <label for="performance-dance-style">Dance Style <small>(if applicable)</small></label>
+              <select id="performance-dance-style" name="Dance Style">
+                <option value="" selected>Select a dance style</option>
+                <option>Bharatanatyam</option>
+                <option>Kuchipudi</option>
+                <option>Odissi</option>
+                <option>Mohiniyattam</option>
+                <option>Kathakali</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="performance-form__grid performance-form__grid--two">
+            <div class="performance-form__field">
+              <label for="performance-date">Event Date / Preferred Date <span aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <input id="performance-date" type="date" name="Event Date / Preferred Date" required>
+            </div>
+            <div class="performance-form__field">
+              <label for="performance-location">Event Location <span aria-hidden="true">*</span><span class="sr-only"> required</span></label>
+              <input id="performance-location" type="text" name="Event Location" placeholder="City, State &amp; Country" autocomplete="off" required>
+            </div>
+          </div>
+
+          <div class="performance-form__grid performance-form__grid--two">
+            <div class="performance-form__field">
+              <label for="performance-venue">Event Venue <small>(optional)</small></label>
+              <input id="performance-venue" type="text" name="Event Venue">
+            </div>
+            <div class="performance-form__field">
+              <label for="performance-duration">Approximate Performance Duration</label>
+              <input id="performance-duration" type="text" name="Approximate Performance Duration" placeholder="For example, 90 minutes">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="performance-form__section" aria-labelledby="performance-form-support-heading">
+        <div class="performance-form__section-head">
+          <span aria-hidden="true">03</span>
+          <div>
+            <h3 id="performance-form-support-heading">Music and rehearsals</h3>
+            <p>The support your programme may need.</p>
+          </div>
+        </div>
+        <div class="performance-form__section-body">
+          <fieldset class="performance-form__choices" aria-describedby="performance-accompaniment-note">
+            <legend>Will accompanying musicians be required?</legend>
+            <div class="performance-form__choice-grid">
+              <label class="performance-form__choice"><input type="radio" name="Accompanying Musicians Required" value="Yes"><span>Yes</span></label>
+              <label class="performance-form__choice"><input type="radio" name="Accompanying Musicians Required" value="No"><span>No</span></label>
+              <label class="performance-form__choice"><input type="radio" name="Accompanying Musicians Required" value="Not sure"><span>Not sure</span></label>
+            </div>
+            <p class="performance-form__help" id="performance-accompaniment-note">If needed, we can help coordinate a complete accompanying ensemble for your performance.</p>
+          </fieldset>
+
+          <fieldset class="performance-form__rehearsals">
+            <legend>Number of Rehearsals Expected <small>(if known)</small></legend>
+            <div class="performance-form__rehearsal-row">
+              <input id="performance-rehearsal-count" type="number" name="Number of Rehearsals Expected" min="0" step="1" inputmode="numeric" placeholder="Number" aria-label="Number of rehearsals expected">
+              <label class="performance-form__unknown">
+                <input type="checkbox" name="Rehearsal Count Status" value="Not sure yet" data-rehearsals-unknown aria-controls="performance-rehearsal-count">
+                <span>Not sure yet</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="performance-form__field performance-form__field--message">
+            <label for="performance-details">Additional Details / Message</label>
+            <textarea id="performance-details" name="Additional Details / Message" rows="6" aria-describedby="performance-details-help"></textarea>
+            <p class="performance-form__help" id="performance-details-help">Tell us briefly about your event and any specific requirements.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="performance-form__footer">
+        <button type="submit" class="performance-form__submit">Send enquiry <span aria-hidden="true">↗</span></button>
+        <p>Your details are used only to respond to this enquiry.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
 <div id="site-footer"></div>
 <script src="js/data.js"></script>
-<script src="js/components.js"></script>
-<script src="js/main.js"></script>
+<script src="js/components.js?v=site-polish-1"></script>
+<script src="js/main.js?v=site-polish-1"></script>
 </body>
 </html>

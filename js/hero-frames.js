@@ -35,7 +35,7 @@
   var aboutOvl  = document.getElementById('about-overlay');
   var loaderEl  = document.getElementById('reel-loader');
   var loaderBar = document.getElementById('reel-loader-bar');
-  /* Actual <a> buttons — pointer-events toggled directly on these */
+  /* Actual <a> buttons · pointer-events toggled directly on these */
   var heroBtns  = heroOvl  ? Array.from(heroOvl.querySelectorAll('.btn'))  : [];
   var aboutBtn  = aboutOvl ? aboutOvl.querySelector('.btn')                 : null;
 

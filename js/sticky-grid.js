@@ -1,5 +1,5 @@
 /* ============================================================
-   Sticky Grid Scroll — Sivaprasad NN
+   Sticky Grid Scroll · Sivaprasad NN
    Adapted from: https://github.com/theoplawinski/codrops-sticky-grid-scroll
    by Theo Plawinski / Codrops
    ============================================================ */
