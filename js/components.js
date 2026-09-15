@@ -13,10 +13,10 @@
     ["About","about.html","about"],
     ["Repertoire","repertoire.html","repertoire"],
     ["Performances","performances.html","performances"],
-    ["Music & Video","music.html","music"],
     ["Learn","learn.html","learn"],
     ["Ensembles","book.html","book"],
-    ["Press","press.html","press"]
+    ["Press","press.html","press"],
+    ["Gallery","music.html","music"]
   ];
 
   var links = nav.map(function(n){
@@ -66,7 +66,7 @@
   +     '<li><a href="about.html">About</a></li>'
   +     '<li><a href="repertoire.html">Repertoire</a></li>'
   +     '<li><a href="performances.html">Performances</a></li>'
-  +     '<li><a href="music.html">Music &amp; Video</a></li></ul>'
+  +     '<li><a href="music.html">Gallery</a></li></ul>'
   +   '</div>'
   +   '<div class="footer-col">'
   +     '<h4>Services</h4><ul>'
