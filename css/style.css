@@ -1206,12 +1206,11 @@ transition:background .3s ease,border-color .3s ease,color .3s ease,transform .3
 
 .spotlight-grid{
   display:grid;
-  grid-template-columns:1.16fr .92fr .92fr;
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:28px;
 }
 @media(max-width:900px){
-  .spotlight-grid{grid-template-columns:repeat(2,1fr)}
-  .spotlight-card--perform{grid-column:1/-1}
+  .spotlight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:620px){.spotlight-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
 
